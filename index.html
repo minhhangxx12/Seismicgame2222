@@ -488,7 +488,6 @@
             <h2>GAME OVER</h2>
             <p>Your Score: <span id="final-score">0</span></p>
             <p>Level Reached: <span id="final-level">1</span></p>
-            <p>Round Reached: <span id="final-round">1</span></p>
             <p>Turns Used: <span id="final-turns">1</span>/3</p>
             <button id="restart-button">PLAY AGAIN</button>
         </div>
@@ -1648,7 +1647,6 @@
             finalScoreElement.textContent = score;
             finalLevelElement.textContent = level;
             finalTurnsElement.textContent = currentTurn;
-            document.getElementById('final-round').textContent = round;
             gameOverScreen.style.display = 'flex';
         }
         
