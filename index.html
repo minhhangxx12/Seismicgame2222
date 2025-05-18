@@ -1,170 +1,4 @@
-><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clay Smash! 2</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0d8a8;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-        }
-        
-        #game-container {
-            position: relative;
-            width: 800px;
-            height: 600px;
-            border: 4px solid #3c2c1e;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-        
-        #game-canvas {
-            background-color: #e0d9ca;
-        }
-        
-        #game-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        #game-background .logo {
-            width: 200px;
-            height: 200px;
-            background-color: #3c2c1e;
-            -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M12.5 30C12.5 30 30 40 50 40C70 40 87.5 30 87.5 30M12.5 70C12.5 70 30 60 50 60C70 60 87.5 70 87.5 70M25 50C25 41.7 31.7 35 40 35M75 50C75 41.7 68.3 35 60 35M25 50C25 58.3 31.7 65 40 65M75 50C75 58.3 68.3 65 60 65"/></svg>') center/contain no-repeat;
-            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M12.5 30C12.5 30 30 40 50 40C70 40 87.5 30 87.5 30M12.5 70C12.5 70 30 60 50 60C70 60 87.5 70 87.5 70M25 50C25 41.7 31.7 35 40 35M75 50C75 41.7 68.3 35 60 35M25 50C25 58.3 31.7 65 40 65M75 50C75 58.3 68.3 65 60 65"/></svg>') center/contain no-repeat;
-        }
-        
-        #game-background .text {
-            color: #3c2c1e;
-            font-size: 40px;
-            font-weight: bold;
-            margin-top: 20px;
-            opacity: 0.7;
-        }
-        
-        #ui-container {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            display: flex;
-            justify-content: space-between;
-            color: #3c2c1e;
-            font-size: 24px;
-            font-weight: bold;
-            text-shadow: 1px 1px 0 #fff;
-        }
-        
-        #health-container {
-            position: absolute;
-            top: 50px;
-            left: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        #health-bar {
-            width: 150px;
-            height: 20px;
-            background-color: #e74c3c;
-            border: 2px solid #3c2c1e;
-            border-radius: 10px;
-            margin-left: 10px;
-            overflow: hidden;
-        }
-        
-        #health-fill {
-            height: 100%;
-            background-color: #2ecc71;
-            width: 100%;
-            transition: width 0.3s;
-        }
-        
-        #turns-container {
-            position: absolute;
-            top: 50px;
-            right: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .turn-indicator {
-            width: 25px;
-            height: 25px;
-            background-color: #3498db;
-            border: 2px solid #2980b9;
-            border-radius: 50%;
-            margin-left: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .turn-used {
-            background-color: #95a5a6;
-            border-color: #7f8c8d;
-            opacity: 0.6;
-        }
-        
-        #points-target {
-            position: absolute;
-            top: 90px;
-            left: 10px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #3c2c1e;
-            text-shadow: 1px 1px 0 #fff;
-            padding: 5px 10px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-        }
-        
-        #start-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            z-index: 10;
-        }
-        
-        #start-screen h1 {
-            font-size: 60px;
-            color: #f4a742;
-            text-shadow: 3px 3px 0 #3c2c1e;
-            margin-bottom: 20px;
-        }
-        
-        #start-screen p {
-            font-size: 20px;
-            margin: 10px 0;
-            text-align: center;
-            max-width: 600px;
-        }
-     
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -480,7 +314,7 @@
             <h1>Clay Smash!</h1>
             <p>Help the earth golem smash obstacles before they hit him!</p>
             <p>Controls: ← → arrow keys to move, Q/W to punch left or right</p>
-            <p>Score at least 200 points to advance to the next round!</p>
+            <p>Score at least 200 points to advance to the next level!</p>
             <p>Avoid bombs! Collect gold for bonus points! Water slows down time!</p>
             <button id="start-button">START GAME</button>
         </div>
@@ -509,10 +343,7 @@
         const OBSTACLE_SPAWN_RATE_INITIAL = 1500; // milliseconds
         const GAME_DURATION_INITIAL = 60; // seconds
         const MAX_TURNS = 3;
-        const POINTS_TARGET_INITIAL = 200; // Points needed to pass round 1
-        const POINTS_TARGET_MULTIPLIER = 1.5; // Each round needs 1.5x more points
-        const SPEED_INCREASE_FACTOR = 1.2; // Each round is 1.2x faster
-        const TIME_INCREASE_FACTOR = 1.2; // Each round has 1.2x more time
+        const POINTS_TARGET_INITIAL = 200; // Points needed to pass level 1
         
         // Game variables
         let canvas, ctx;
@@ -533,7 +364,6 @@
         let lastFrameTime = 0;
         let currentTurn = 1;
         let roundOver = false;
-        let round = 1;
         let pointsTarget = POINTS_TARGET_INITIAL;
         
         // DOM Elements
@@ -1068,7 +898,7 @@
                         slowMotionTimer = 300; // ~5 seconds at 60fps
                         
                         // Play water sound
-                        waterSound.currentTime =.5;
+                        waterSound.currentTime = 0;
                         waterSound.play();
                         break;
                         
@@ -1220,9 +1050,7 @@
                 ctx.fill();
                 ctx.restore();
             }
-        }
-        
-        // Game utility variables
+        }// Game utility variables
         let scorePopups = [];
         let explosions = [];
         
@@ -1340,7 +1168,7 @@
                 
                 // Check if player has reached the points target
                 if (score >= pointsTarget) {
-                    advanceToNextRound();
+                    advanceToNextLevel();
                     return;
                 }
                 
@@ -1373,16 +1201,16 @@
             }
         }
         
-        function advanceToNextRound() {
+        function advanceToNextLevel() {
             // Stop gameplay temporarily
             gameActive = false;
             
-            // Display round complete message
-            const roundCompleteText = document.createElement('div');
-            roundCompleteText.className = 'level-up';
-            roundCompleteText.style.color = '#27ae60';
-            roundCompleteText.textContent = `ROUND ${round} COMPLETE!`;
-            document.getElementById('game-container').appendChild(roundCompleteText);
+            // Display level complete message
+            const levelCompleteText = document.createElement('div');
+            levelCompleteText.className = 'level-up';
+            levelCompleteText.style.color = '#27ae60';
+            levelCompleteText.textContent = `LEVEL ${level} COMPLETE!`;
+            document.getElementById('game-container').appendChild(levelCompleteText);
             
             // Play level up sound
             levelUpSound.currentTime = 0;
@@ -1390,38 +1218,39 @@
             
             // Animate
             setTimeout(() => {
-                roundCompleteText.style.opacity = '1';
-                roundCompleteText.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                levelCompleteText.style.opacity = '1';
+                levelCompleteText.style.transform = 'translate(-50%, -50%) scale(1.5)';
                 
-                // Wait 2 seconds before starting next round
+                // Wait 2 seconds before starting next level
                 setTimeout(() => {
-                    roundCompleteText.style.opacity = '0';
-                    roundCompleteText.style.transform = 'translate(-50%, -100%) scale(1)';
+                    levelCompleteText.style.opacity = '0';
+                    levelCompleteText.style.transform = 'translate(-50%, -100%) scale(1)';
                     
                     setTimeout(() => {
-                        roundCompleteText.remove();
-                        startNextRound();
+                        levelCompleteText.remove();
+                        startNextLevel();
                     }, 500);
                 }, 2000);
             }, 10);
         }
         
-        function startNextRound() {
-            // Advance to next round
-            round++;
+        function startNextLevel() {
+            // Increase level
+            level++;
             
             // Reset turns
             currentTurn = 1;
             updateTurnIndicators();
             
             // Increase difficulty
-            pointsTarget = Math.floor(POINTS_TARGET_INITIAL * Math.pow(POINTS_TARGET_MULTIPLIER, round - 1));
-            obstacleSpeed = OBSTACLE_SPEED_INITIAL * Math.pow(SPEED_INCREASE_FACTOR, round - 1);
-            obstacleSpawnRate = Math.max(OBSTACLE_SPAWN_RATE_INITIAL / Math.pow(SPEED_INCREASE_FACTOR, round - 1), 300);
-            gameTime = Math.floor(GAME_DURATION_INITIAL * Math.pow(TIME_INCREASE_FACTOR, round - 1));
+            pointsTarget = Math.floor(POINTS_TARGET_INITIAL * level); // Linear increase with level
+            obstacleSpeed = OBSTACLE_SPEED_INITIAL + (level - 1) * 0.5; // Linear increase with level
+            obstacleSpawnRate = Math.max(OBSTACLE_SPAWN_RATE_INITIAL - (level - 1) * 200, 300); // Faster spawns with level
+            gameTime = GAME_DURATION_INITIAL + (level - 1) * 10; // More time with each level
             
             // Update UI
             updatePointsTarget();
+            levelElement.textContent = `Level: ${level}`;
             timerElement.textContent = `Time: ${gameTime}`;
             
             // Reset golem health
@@ -1509,8 +1338,8 @@
             
             // Check if target score reached
             if (score >= pointsTarget && gameActive) {
-                // Auto advance to next round when target is reached during gameplay
-                advanceToNextRound();
+                // Auto advance to next level when target is reached during gameplay
+                advanceToNextLevel();
             }
         }
         
@@ -1569,7 +1398,6 @@
             level = 1;
             combo = 0;
             comboTimer = 0;
-            round = 1;
             currentTurn = 1;
             roundOver = false;
             
@@ -1749,4 +1577,3 @@
     </script>
 </body>
 </html>
-        
